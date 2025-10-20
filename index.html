@@ -1,13 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoteThinks</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NoteThinks</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: antiquewhite;
+      font-family: Arial, sans-serif;
+    }
+
+    .logo-header {
+      width: 100%;
+      max-height: 300px; 
+      object-fit: contain; 
+      display: block;
+      margin: 0 auto; 
+    }
     
+    .container {
+      position: absolute;
+      top: 16px;
+      right: 32px;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: calc(100% - 64px);
+      z-index: 2;
+    }
+
+    .container img {
+      height: 75px;
+      width: auto;
+    }
+
+    .link {
+      color: white;
+      text-decoration: none;
+      margin-left: 16px;
+      transition: color 0.3s, text-decoration 0.3s;
+    }
+
+    .link:hover {
+      color: black;
+      text-decoration: underline;
+    }
+
+    .coming-soon {
+        text-align: center;
+        font-size: 48px;
+        font-weight: bold;
+        color: #333;
+        margin-top: 60px;
+    }
+
+  </style>
 </head>
 <body>
-    <img src="LogowithText.png" alt="">
-    <h1>Comming Soon</h1>
+    
+  <div class="container">
+    <img src="/img/Logo-Photoroom.png" alt="Kleines Logo">
+    <nav>
+      <a class="link" href="#">Notes</a>
+      <a class="link" href="#">Folders</a>
+    </nav>
+  </div>
+
+  <h1 class="coming-soon">Coming Soon!</h1>
+
 </body>
 </html>
