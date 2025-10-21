@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>NoteThinks – Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    background-color: antiquewhite;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+    height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Hidden checkbox for sidebar toggle */
+  #sidebar-toggle {
+    display: none;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    position: relative;
+    z-index: 10;
+    transition: margin-left 0.4s ease;
+  }
+
+  /* Logo */
+  .logo {
+    height: 80px;
+    width: auto;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    display: block;
+    position: relative;
+    z-index: 11; /* Höher als Sidebar */
+  }
+
+  /* Move header and logo further to the right when sidebar open */
+  #sidebar-toggle:checked ~ .header {
+    margin-left: 260px; /* Erhöht von 240px auf 260px für mehr Abstand */
+  }
+
+  /* Search bar */
+  .search-container {
+    flex: 1;
+    max-width: 600px;
+    margin-left: 24px;
+  }
+
+  .search-container input {
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: 50px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-size: 16px;
+    background-color: white;
+    color: #333;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+    transition: box-shadow 0.2s ease;
+  }
+
+  .search-container input:focus {
+    box-shadow: 0 0 6px rgba(0,0,0,0.15);
+  }
+
+  /* Settings button */
+  .settings-btn {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .settings-btn:hover {
+    background-color: #f1f1f1;
+    transform: rotate(20deg);
+  }
+
+  .settings-icon {
+    width: 22px;
+    height: 22px;
+    filter: grayscale(40%);
+  }
+
+  /* Sidebar */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 240px;
+    height: 100vh;
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+    box-shadow: 2px 0 6px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    transform: translateX(-260px);
+    transition: transform 0.4s ease;
+    z-index: 9;
+  }
+
+  #sidebar-toggle:checked ~ .sidebar {
+    transform: translateX(0);
+  }
+
+  /* Folder structure */
+  .folders {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    margin-bottom: 16px;
+  }
+
+  .folder {
+    margin-bottom: 10px;
+  }
+
+  .folder summary {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: 6px;
+    transition: background 0.2s;
+    list-style: none;
+  }
+
+  .folder summary:hover {
+    background-color: #f4f4f4;
+  }
+
+  .folder ul {
+    list-style: none;
+    padding-left: 18px;
+    margin: 5px 0;
+  }
+
+  .folder li {
+    padding: 4px 0;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+
+  .folder li:hover {
+    background-color: #f1f1f1;
+  }
+
+  /* Sidebar buttons at bottom */
+  .sidebar-buttons {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 20px; /* Added padding to prevent cutting off */
+  }
+
+  .sidebar-buttons button {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .sidebar-buttons button:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.05);
+  }
+
+  /* Main content stays centered */
+  .content {
+    text-align: center;
+    padding: 120px 20px;
+    margin-left: 0;
+    transition: margin-left 0.4s ease;
+  }
+  
+  /* Move content when sidebar open */
+  #sidebar-toggle:checked ~ .content {
+    margin-left: 260px; /* Auch hier auf 260px erhöht für Konsistenz */
+  }
+</style>
+</head>
+<body>
+
+  <!-- Sidebar toggle -->
+  <input type="checkbox" id="sidebar-toggle">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="folders">
+      <details class="folder">
+        <summary>📁 Work</summary>
+        <ul>
+          <li>Meeting Notes</li>
+          <li>Project Plan</li>
+        </ul>
+      </details>
+
+      <details class="folder">
+        <summary>📁 Personal</summary>
+        <ul>
+          <li>Recipe Ideas</li>
+          <li>Travel Plans</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="sidebar-buttons">
+      <button>+ Folder</button>
+      <button>+ Note</button>
+    </div>
+  </aside>
+
+  <!-- Header -->
+  <header class="header">
+    <label for="sidebar-toggle">
+      <img src="/img/Logo-Photoroom.png" alt="Logo" class="logo">
+    </label>
+
+    <div class="search-container">
+      <input type="text" placeholder="Search notes or folders...">
+    </div>
+
+    <div class="settings-btn">
+      <img src="https://cdn-icons-png.flaticon.com/512/3524/3524659.png" alt="Settings" class="settings-icon">
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="content">
+    <h2>Welcome to your Notes</h2>
+    <p>This is where your notes will appear later...</p>
+  </main>
+
+</body>
+</html>
