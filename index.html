@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NoteThinks</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NoteThinks</title>
+
   <style>
     body {
       margin: 0;
@@ -14,18 +15,16 @@
       font-family: "M PLUS Rounded 1c", sans-serif;
       font-weight: 400;
       font-style: normal;
-}
-
-    
+    }
 
     .logo-header {
       width: 100%;
-      max-height: 300px; 
-      object-fit: contain; 
+      max-height: 300px;
+      object-fit: contain;
       display: block;
-      margin: 0 auto; 
+      margin: 0 auto;
     }
-    
+
     .container {
       position: absolute;
       top: 16px;
@@ -39,49 +38,41 @@
     }
 
     .container img {
-      height: 75px;
+      height: 100px;
       width: auto;
     }
 
+    /* Wichtig: display inline-block, Transition hinzufügen */
     .link {
       color: black;
       text-decoration: none;
       margin-left: 16px;
-      transition: color 0.3s, text-decoration 0.3s;
+      display: inline-block;               /* macht transform verlässlich */
+      transition: transform 0.18s ease, color 0.18s ease;
+      transform-origin: center center;     /* optional: Drehpunkt */
+      will-change: transform;              /* Performance-Hinweis */
     }
 
     .link:hover {
-      color: black;
-      text-decoration: underline;
+      color: black;                        /* Farbe kannst du ändern */
+      transform: scale(1.2);               /* Vergrößerung */
     }
 
-    .coming-soon {
-        text-align: center;
-        font-size: 48px;
-        font-weight: bold;
-        color: #333;
-        margin-top: 60px;
+    /* Optional: damit die Links beim Skalieren nicht überlappen */
+    nav {
+      display: flex;
+      gap: 12px;
+      align-items: center;
     }
-
-
-
   </style>
 </head>
 <body>
-    
   <div class="container">
     <img src="/img/Logo-Photoroom.png" alt="Kleines Logo">
     <nav>
-      <a class="link" href="#">Notes</a>
+      <a class="link" href="notes.htmlwd">Notes</a>
       <a class="link" href="#">Folders</a>
     </nav>
   </div>
-
-  <h1 class="coming-soon">FREE TO USE ONLINE NOTETAKING.</h1>
-  <h2 class="coming-soon">Coming Soon...</h2>
-
-</body>
-</html>
-
 </body>
 </html>
