@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NoteThinks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+
+  <style>
+
+    html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+    .sidebar {
+  background-color: antiquewhite;
+  width: 250px;
+  border-right: 5px solid #093658;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding-top: 5px;   
+    }
+    
+    .logo {
+      width: 180px;
+      height: auto;
+      clip-path: inset(25% 0 30% 0);
+    }
+
+    .searchbar{
+      width: 150px;
+      height: 15px;
+      background-color:#fdcd60;
+      margin-top: -50px;
+      border: 2px solid #093658;
+      border-radius: 50px;
+     
+    }
+
+    .searchbar::placeholder {
+      color: #093658;
+      opacity: 1;
+    }
+    
+  </style>
+</head>
+
+<body>
+<div class="sidebar">
+  <img src="/img/Logo-Photoroom.png" alt="Logo without Text" class="logo">
+  <input type="text" placeholder="Search Notes..." class="searchbar">
+</div>
+
+
+
+</body>
+
+</html>
